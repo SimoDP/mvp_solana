@@ -239,8 +239,8 @@
         </div>
 
         <div class="button-container">
-            <button href="manutenzioni.html">Add Manutenzione</button>
-            <button onclick="window.location.href='changeAssi.html'">Change Assicurar.</button>
+            <button onclick="aggiungiManutenzione()">Aggiungi Manutenzione</button>
+            <button onclick="cambiaAssicurazione()">Cambia Assicurazione</button>
         </div>
 
         <div class="table-container">
@@ -275,6 +275,16 @@
         function changeAssicurazione() {
             // Funzione per cambiare assicurazione
         }
+
+        function aggiungiManutenzione() {
+            window.location.href = 'pages/aggiungiManutenzione.html';
+        }
+
+        function cambiaAssicurazione() {
+            window.location.href = 'pages/cambiaAssicurazione.html';
+        }
+
+
     </script>
 </body>
 </html>
