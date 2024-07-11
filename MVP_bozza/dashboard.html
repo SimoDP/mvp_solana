@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Aziendale</title>
+    <style>
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #080710;
+            overflow: auto; /* Gestire l'overflow */
+            padding: 40px; /* Spazio tra il container e i bordi del browser */
+            height: 100vh; /* Altezza del body al 100% della viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+        }
+
+        .background {
+            width: 430px;
+            height: 520px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+            z-index: 0; /* Assicura che lo sfondo stia sotto il form */
+        }
+
+        .background .shape {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .shape:first-child {
+            background: linear-gradient(
+                #1845ad,
+                #23a2f6
+            );
+            left: -80px;
+            top: -80px;
+        }
+
+        .shape:last-child {
+            background: linear-gradient(
+                to right,
+                #ff512f,
+                #f09819
+            );
+            right: -30px;
+            bottom: -80px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.13);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Aggiunto per mantenere la priorità */
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .header img {
+            height: 50px;
+        }
+
+        .header h1 {
+            flex-grow: 1;
+            text-align: center;
+            margin: 0;
+        }
+
+        .header button {
+            background-color: white;
+            color: #007BFF;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .header button:hover {
+            background-color: #e6e6e6;
+        }
+
+        .menu-button {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 50px;
+            background-color: #343a40;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 900; /* Aggiunto per mantenere la priorità */
+            border: none;
+            transition: background 0.3s;
+        }
+
+        .menu-button:hover {
+            background-color: #495057;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 50px;
+            height: 100%;
+            width: 200px;
+            background-color: #343a40;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 800; /* Aggiunto per mantenere la priorità */
+            padding: 20px;
+        }
+
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #007BFF;
+            border-radius: 5px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #0056b3;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: margin-left 0.3s ease;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .container {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.13);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            transition: box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .container:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            background-color: rgba(255, 255, 255, 0.13);
+            padding: 10px 20px;
+            text-align: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Aggiunto per mantenere la priorità */
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .footer a {
+            margin: 0 10px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+	
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            if (menu.style.display === 'none' || menu.style.display === '') {
+                menu.style.display = 'flex';
+            } else {
+                menu.style.display = 'none';
+            }
+        }
+    
+    </script>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    <div id="menu" class="menu">
+        <a href="newCar.html">New Car</a>
+        <a href="findCar.html">Find Car</a>
+    </div>
+
+    <div class="header">
+        <img src="logo.jpg" alt="Logo Azienda">
+        <h1>Titolo della Pagina</h1>
+        <button>Corporate_data</button>
+    </div>
+
+    <!-- Contenuto principale della pagina -->
+    <div class="content">
+        <div class="container">
+            <!-- Qui va il risultato delle chiamate SQL -->
+            <h2>Risultati della tua ricerca</h2>
+            <p>Qui verranno mostrati i dati recuperati dal database.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="#chi-siamo">Chi Siamo</a>
+        <a href="#social">Twitter</a>
+        <a href="#contatti">Contatti</a>
+    </div>
+</body>
+</html>

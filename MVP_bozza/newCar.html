@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>New Car Form Tutorial in html css</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+      *:before,
+      *:after {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          background-color: #080710;
+          overflow: auto; /* Gestire l'overflow */
+          padding: 40px; /* Spazio tra il container e i bordi del browser */
+          height: 100vh; /* Altezza del body al 100% della viewport */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .background {
+          width: 430px;
+          height: 400px; /* Altezza ridotta per adattarsi al contenuto */
+          position: absolute;
+          transform: translate(-50%, -50%);
+          left: 50%;
+          top: 50%;
+          z-index: 0; /* Assicura che lo sfondo stia sotto il form */
+      }
+
+      .background .shape {
+          height: 200px;
+          width: 200px;
+          position: absolute;
+          border-radius: 50%;
+      }
+
+      .shape:first-child {
+          background: linear-gradient(
+              #1845ad,
+              #23a2f6
+          );
+          left: -80px;
+          top: -80px;
+      }
+
+      .shape:last-child {
+          background: linear-gradient(
+              to right,
+              #ff512f,
+              #f09819
+          );
+          right: -30px;
+          bottom: -80px;
+      }
+
+      form {
+          height: 100%; /* Altezza al 100% del contenitore */
+          width: 800px; /* Larghezza aumentata per adattarsi al contenuto */
+          background-color: rgba(255, 255, 255, 0.13);
+          position: relative;
+          border-radius: 10px;
+          backdrop-filter: blur(10px);
+          border: 2px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+          padding: 50px 35px;
+          z-index: 1; /* Assicura che il form stia sopra lo sfondo */
+          overflow: auto; /* Permette lo scrolling se il contenuto è troppo grande */
+      }
+
+      form * {
+          font-family: 'Poppins', sans-serif;
+          color: #ffffff;
+          letter-spacing: 0.5px;
+          outline: none;
+          border: none;
+      }
+
+      form h3 {
+          font-size: 32px;
+          font-weight: 500;
+          line-height: 42px;
+          text-align: center;
+          margin-bottom: 20px; /* Spazio sotto il sottotitolo */
+      }
+
+      label {
+          display: block;
+          margin-top: 20px; /* Ridotto per adattarsi al contenuto */
+          font-size: 16px;
+          font-weight: 500;
+      }
+
+      input {
+          display: block;
+          height: 50px;
+          width: 100%;
+          background-color: rgba(255, 255, 255, 0.07);
+          border-radius: 3px;
+          padding: 0 10px;
+          margin-top: 8px;
+          font-size: 14px;
+          font-weight: 300;
+      }
+
+      ::placeholder {
+          color: #e5e5e5;
+      }
+
+      .button-container {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 30px; /* Spazio tra l'ultima casella di testo e i bottoni */
+      }
+
+      button {
+          width: 30%;
+          background-color: #ffffff;
+          color: #080710;
+          padding: 15px 0;
+          font-size: 18px;
+          font-weight: 600;
+          border-radius: 5px;
+          cursor: pointer;
+          text-align: center;
+      }
+
+      .grid-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+      }
+
+      .grid-item {
+          display: flex;
+          flex-direction: column;
+      }
+
+      .table-container {
+          margin-top: 30px;
+          background-color: rgba(255, 255, 255, 0.13);
+          padding: 20px;
+          border-radius: 10px;
+          border: 2px solid rgba(255, 255, 255, 0.1);
+      }
+
+      table {
+          width: 100%;
+          border-collapse: collapse;
+      }
+
+      th, td {
+          border: 1px solid #ffffff;
+          padding: 10px;
+          text-align: center;
+          color: #ffffff;
+      }
+
+      th {
+          background-color: rgba(255, 255, 255, 0.07);
+      }
+
+      .upload-button {
+          width: 100%; /* Più largo */
+          background-color: #ffffff;
+          color: #080710;
+          padding: 10px 0; /* Meno alto */
+          font-size: 18px;
+          font-weight: 600;
+          border-radius: 5px;
+          cursor: pointer;
+          text-align: center;
+      }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form>
+        <h3>New Car</h3>
+
+        <div class="grid-container">
+            <div class="grid-item">
+                <label for="marca">Marca</label>
+                <input type="text" placeholder="Marca" id="marca" oninput="updatePreview()">
+            </div>
+            <div class="grid-item">
+                <label for="modello">Modello</label>
+                <input type="text" placeholder="Modello" id="modello" oninput="updatePreview()">
+            </div>
+            <div class="grid-item">
+                <label for="versione">Versione</label>
+                <input type="text" placeholder="Versione" id="versione" oninput="updatePreview()">
+            </div>
+            <div class="grid-item">
+                <label for="mate-ce">Mate. C/E</label>
+                <input type="text" placeholder="Mate. C/E" id="mate-ce" oninput="updatePreview()">
+            </div>
+            <div class="grid-item">
+                <label for="data-immatr">Data Immatr.</label>
+                <input type="text" placeholder="Data Immatr." id="data-immatr" oninput="updatePreview()">
+            </div>
+            <div class="grid-item">
+                <label for="targa">Targa</label>
+                <input type="text" placeholder="Targa" id="targa" oninput="updatePreview()">
+            </div>
+            <div class="grid-item">
+                <label for="comp-ass">Comp. Ass.</label>
+                <input type="text" placeholder="Comp. Ass." id="comp-ass" oninput="updatePreview()">
+            </div>
+            <div class="grid-item">
+                <label for="id-contr">ID Contratto</label>
+                <input type="text" placeholder="ID Contratto" id="id-contr" oninput="updatePreview()">
+            </div>
+            <div class="grid-item">
+                <label for="data-stip">Data Stipula</label>
+                <input type="text" placeholder="Data Stipula" id="data-stip" oninput="updatePreview()">
+            </div>
+            <div class="grid-item">
+                <label for="data-scadenza">Data Scadenza</label>
+                <input type="text" placeholder="Data Scadenza" id="data-scadenza" oninput="updatePreview()">
+            </div>
+        </div>
+
+        <div class="table-container">
+            <h4>Manutenzioni (tabella dati input blockchain)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Manut.</th>
+                        <th>Data</th>
+                        <th>KM</th>
+                        <th>Esegui</th>
+                        <th>PDF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" placeholder="Tipo" id="tipo"></td>
+                        <td><input type="text" placeholder="Manut." id="manut"></td>
+                        <td><input type="text" placeholder="Data" id="data"></td>
+                        <td><input type="text" placeholder="KM" id="km"></td>
+                        <td><input type="text" placeholder="Esegui" id="esegui"></td>
+                        <td>
+                            <button type="button" class="upload-button" onclick="document.getElementById('pdf-input').click()">Carica PDF</button>
+                            <input type="file" id="pdf-input" style="display: none;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="button-container">
+            <button type="submit">Save & Exit</button>
+            <button type="button" onclick="location.href='dashboard.html'">Cancel</button>
+            <button type="button" onclick="location.href='dashboard.html'">Save & New</button>
+        </div>
+    </form>
+
+    <script>
+        function updatePreview() {
+            document.getElementById('preview-tipo').innerText = document.getElementById('marca').value;
+            document.getElementById('preview-manut').innerText = document.getElementById('modello').value;
+            document.getElementById('preview-data').innerText = document.getElementById('data-immatr').value;
+            document.getElementById('preview-km').innerText = document.getElementById('km').value;
+            document.getElementById('preview-esegui').innerText = document.getElementById('esegui').value;
+            document.getElementById('preview-pdf').innerText = document.getElementById('pdf').value;
+        }
+    </script>
+</body>
+</html>
